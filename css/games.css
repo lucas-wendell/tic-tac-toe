@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+body {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: hsl(199, 33%, 15%);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Roboto", sans-serif;
+}
+
+.main {
+	height: 100%;
+}
+
+.main .board {
+	display: grid;
+	gap: 10px;
+	height: 350px;
+	grid-template-columns: repeat(3, 150px);
+	grid-template-rows: 30px 150px 150px 150px;
+}
+
+.main .board .square {
+	background-color: aqua;
+	border-radius: 7px;
+}
+
+.main .square {
+	background-color: aqua;
+	border-radius: 7px;
+}
+
+.icons {
+	display: flex;
+	align-items: flex-end;
+	font-size: 1.2rem;
+}
+
+.turnDiv {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: brown;
+	text-transform: uppercase;
+	border-radius: 5px;
+}
+
+.rotateDiv {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: blueviolet;
+	width: 30px;
+	border-radius: 5px;
+	color: hsl(199, 33%, 15%);
+	justify-self: end;
+}
+
+.statusDiv {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	text-transform: uppercase;
+	border-radius: 5px;
+	background-color: chartreuse;
+}
