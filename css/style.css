@@ -57,21 +57,25 @@ body {
 	display: flex;
 	border-radius: 7px;
 	background-color: hsl(199, 33%, 15%);
+	transition: 0.7s;
+}
+
+.main .choosePlayerDiv .chooseButtons button[data-js="active"] {
+	background-color: hsl(200, 24%, 73%);
+	color: hsl(199, 33%, 15%);
 }
 
 .main .choosePlayerDiv .chooseButtons button {
 	width: 50%;
 	height: 25px;
 	border: none;
+	cursor: pointer;
 	font-size: 1rem;
 	border-radius: 3px;
 	background: transparent;
+	transition: 0.7s;
+	background-color: transparent;
 	color: hsl(200, 24%, 73%);
-}
-
-.main .choosePlayerDiv .chooseButtons button:first-child {
-	color: hsl(199, 33%, 15%);
-	background-color: hsl(200, 24%, 73%);
 }
 
 .main .versusButtonDiv {
@@ -80,18 +84,26 @@ body {
 	flex-direction: column;
 }
 
-.main .versusButtonDiv button {
-	border: none;
+.main .versusButtonDiv a {
 	height: 30px;
+	width: 100%;
+	margin-bottom: 5px;
+	color: hsl(199, 33%, 15%);
+}
+
+.main .versusButtonDiv a button {
+	border: none;
+	height: 100%;
+	cursor: pointer;
 	font-weight: 500;
 	font-size: 0.9rem;
-	margin-bottom: 5px;
+	width: 100%;
 	border-radius: 5px;
-	color: hsl(199, 33%, 15%);
+	/* color: hsl(199, 33%, 15%); */
 	background-color: hsl(39, 88%, 58%);
 }
 
-.main .versusButtonDiv button:last-child {
+.main .versusButtonDiv a:last-child button {
 	background-color: hsl(178, 59%, 48%);
 }
 

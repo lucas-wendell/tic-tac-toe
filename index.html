@@ -24,15 +24,28 @@
 			<div class="choosePlayerDiv">
 				<h1>pick player us here</h1>
 				<div class="chooseButtons">
-					<button><i class="fa-regular fa-circle"></i></button>
-					<button><i class="fa-solid fa-xmark"></i></button>
+					<button data-fn="chooseSymbolButton" data-js="active" value="circle">
+						<i class="fa-regular fa-circle"></i>
+					</button>
+					<button data-fn="chooseSymbolButton" value="Xmark">
+						<i class="fa-solid fa-xmark"></i>
+					</button>
 				</div>
 			</div>
 
 			<div class="versusButtonDiv">
-				<button>new game (vs cpu)</button>
-				<button>new game (vs player)</button>
+				<a href="./game.html">
+					<button data-fn="choosePlayerButton" value="cpu">
+						new game (vs cpu)
+					</button>
+				</a>
+				<a href="./game.html">
+					<button data-fn="choosePlayerButton" value="player">
+						new game (vs player)
+					</button>
+				</a>
 			</div>
 		</main>
+		<script src="./dist/index.js"></script>
 	</body>
 </html>
