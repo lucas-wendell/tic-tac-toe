@@ -27,42 +27,60 @@ body {
 }
 
 .main .square {
-	background-color: aqua;
+	cursor: pointer;
 	border-radius: 7px;
+	background-color: hsl(200, 35%, 19%);
 }
 
 .icons {
 	display: flex;
+	font-size: 1.4rem;
 	align-items: flex-end;
-	font-size: 1.2rem;
+	color: hsl(39, 88%, 58%);
+}
+
+.icons i:first-child {
+	color: hsl(178, 59%, 48%);
 }
 
 .turnDiv {
 	display: flex;
+	font-weight: 500;
+	border-radius: 5px;
 	align-items: center;
 	justify-content: center;
-	background-color: brown;
 	text-transform: uppercase;
-	border-radius: 5px;
+	color: hsl(200, 24%, 73%);
+	background-color: hsl(200, 35%, 19%);
 }
 
 .rotateDiv {
+	width: 30px;
 	display: flex;
+	cursor: pointer;
+	justify-self: end;
+	border-radius: 5px;
 	align-items: center;
 	justify-content: center;
-	background-color: blueviolet;
-	width: 30px;
-	border-radius: 5px;
 	color: hsl(199, 33%, 15%);
-	justify-self: end;
+	background-color: hsl(200, 24%, 73%);
 }
 
 .statusDiv {
 	display: flex;
+	font-weight: 500;
+	border-radius: 5px;
 	align-items: center;
 	flex-direction: column;
 	justify-content: center;
 	text-transform: uppercase;
-	border-radius: 5px;
-	background-color: chartreuse;
+	color: hsl(199, 33%, 15%);
+	background-color: hsl(200, 24%, 73%);
+}
+
+.statusDiv.x-scoreboard {
+	background-color: hsl(178, 59%, 48%);
+}
+.statusDiv.circle-scoreboard {
+	background-color: hsl(39, 88%, 58%);
 }
