@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 
+:root {
+	--gray-color: hsl(200, 24%, 73%);
+	--square-color: hsl(200, 35%, 19%);
+	--background-color: hsl(199, 33%, 15%);
+	--highlights-blue-color: hsl(178, 59%, 48%);
+	--highlights-orange-color: hsl(39, 88%, 58%);
+}
+
 body {
 	width: 100vw;
 	height: 100vh;
@@ -29,32 +37,32 @@ body {
 .main .square {
 	cursor: pointer;
 	border-radius: 7px;
-	background-color: hsl(200, 35%, 19%);
+	background-color: var(--square-color);
 }
 
-.icons {
+.main .icons {
 	display: flex;
 	font-size: 1.4rem;
 	align-items: flex-end;
-	color: hsl(39, 88%, 58%);
+	color: var(--highlights-orange-color);
 }
 
-.icons i:first-child {
-	color: hsl(178, 59%, 48%);
+.main .icons i:first-child {
+	color: var(--highlights-blue-color);
 }
 
-.turnDiv {
+.main .turnDiv {
 	display: flex;
 	font-weight: 500;
 	border-radius: 5px;
 	align-items: center;
 	justify-content: center;
 	text-transform: uppercase;
-	color: hsl(200, 24%, 73%);
-	background-color: hsl(200, 35%, 19%);
+	color: var(--gray-color);
+	background-color: var(--square-color);
 }
 
-.rotateDiv {
+.main .rotateDiv {
 	width: 30px;
 	display: flex;
 	cursor: pointer;
@@ -62,11 +70,11 @@ body {
 	border-radius: 5px;
 	align-items: center;
 	justify-content: center;
-	color: hsl(199, 33%, 15%);
-	background-color: hsl(200, 24%, 73%);
+	color: var(--background-color);
+	background-color: var(--gray-color);
 }
 
-.statusDiv {
+.main .statusDiv {
 	display: flex;
 	font-weight: 500;
 	border-radius: 5px;
@@ -74,13 +82,14 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	text-transform: uppercase;
-	color: hsl(199, 33%, 15%);
-	background-color: hsl(200, 24%, 73%);
+	color: var(--background-color);
+	background-color: var(--gray-color);
 }
 
-.statusDiv.x-scoreboard {
-	background-color: hsl(178, 59%, 48%);
+.main .statusDiv.x-scoreboard {
+	background-color: var(--highlights-blue-color);
 }
-.statusDiv.circle-scoreboard {
-	background-color: hsl(39, 88%, 58%);
+
+.main .statusDiv.circle-scoreboard {
+	background-color: var(--highlights-orange-color);
 }
