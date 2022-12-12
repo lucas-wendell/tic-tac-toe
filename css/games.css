@@ -17,20 +17,13 @@ body {
 }
 
 .main {
-	height: 100%;
-}
-
-.main .board {
-	display: grid;
 	gap: 10px;
-	height: 350px;
+	height: 100vh;
+	display: grid;
+	align-self: center;
+	align-content: center;
 	grid-template-columns: repeat(3, 150px);
-	grid-template-rows: 30px 150px 150px 150px;
-}
-
-.main .board .square {
-	background-color: aqua;
-	border-radius: 7px;
+	grid-template-rows: 30px 150px 150px 150px 50px;
 }
 
 .main .square {
