@@ -1,12 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 
+:root {
+	--gray-color: hsl(200, 24%, 73%);
+	--square-color: hsl(200, 35%, 19%);
+	--background-color: hsl(199, 33%, 15%);
+	--highlights-blue-color: hsl(178, 59%, 48%);
+	--highlights-orange-color: hsl(39, 88%, 58%);
+}
+
 body {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: hsl(199, 33%, 15%);
+	background-color: var(--background-color);
 }
 
 * {
@@ -26,11 +34,11 @@ body {
 
 .main .icons {
 	font-size: 1.3rem;
-	color: hsl(39, 88%, 58%);
+	color: var(--highlights-orange-color);
 }
 
 .main .icons i:first-child {
-	color: hsl(178, 59%, 48%);
+	color: var(--highlights-blue-color);
 }
 
 .main .choosePlayerDiv {
@@ -41,7 +49,7 @@ body {
 	align-items: center;
 	flex-direction: column;
 	justify-content: space-around;
-	background-color: hsl(200, 35%, 19%);
+	background-color: var(--square-color);
 }
 
 .main .choosePlayerDiv h1 {
@@ -56,13 +64,13 @@ body {
 	padding: 5px;
 	display: flex;
 	border-radius: 7px;
-	background-color: hsl(199, 33%, 15%);
+	background-color: var(--background-color);
 	transition: 0.7s;
 }
 
 .main .choosePlayerDiv .chooseButtons button[data-js="active"] {
-	background-color: hsl(200, 24%, 73%);
-	color: hsl(199, 33%, 15%);
+	background-color: var(--gray-color);
+	color: var(--background-color);
 }
 
 .main .choosePlayerDiv .chooseButtons button {
@@ -75,7 +83,7 @@ body {
 	background: transparent;
 	transition: 0.7s;
 	background-color: transparent;
-	color: hsl(200, 24%, 73%);
+	color: var(--gray-color);
 }
 
 .main .versusButtonDiv {
@@ -88,7 +96,7 @@ body {
 	height: 30px;
 	width: 100%;
 	margin-bottom: 5px;
-	color: hsl(199, 33%, 15%);
+	color: var(--background-color);
 }
 
 .main .versusButtonDiv a button {
@@ -99,17 +107,9 @@ body {
 	font-size: 0.9rem;
 	width: 100%;
 	border-radius: 5px;
-	background-color: hsl(39, 88%, 58%);
+	background-color: var(--highlights-orange-color);
 }
 
 .main .versusButtonDiv a:last-child button {
-	background-color: hsl(178, 59%, 48%);
+	background-color: var(--highlights-blue-color);
 }
-
-/*
-	hsl(199, 33%, 15%) -> background-color
-	hsl(200, 35%, 19%) -> square-color
-	hsl(178, 59%, 48%) -> main-color
-	hsl(39, 88%, 58%) -> orange-color
-	hsl(200, 24%, 73%) -> gray-color
-*/
