@@ -20,5 +20,7 @@ module.exports = {
 		sourceType: "module",
 	},
 	plugins: ["@typescript-eslint"],
-	rules: {},
+	rules: {
+		"no-prototype-builtins": "error",
+	},
 };
