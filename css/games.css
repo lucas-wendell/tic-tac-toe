@@ -38,6 +38,11 @@ body {
 	cursor: pointer;
 	border-radius: 7px;
 	background-color: var(--square-color);
+	transition: 0.5s;
+}
+
+.main .square:hover {
+	background-color: var(--highlights-blue-color);
 }
 
 .main .icons {

@@ -1,16 +1,16 @@
 const main = document.querySelector(".main") as HTMLDivElement;
-
 const buttons = Array.from(
 	document.querySelectorAll(".chooseButtons button"),
 ) as HTMLButtonElement[];
 
-const filterButton = () =>
-	buttons.filter((button) => button.getAttribute("data-js"));
-
 const actions = {
+	filterButton() {
+		return buttons.filter((button) => button.getAttribute("data-js"));
+	},
+
 	chooseSymbolButton(target: Element) {
 		const dataJs = target.getAttribute("data-js");
-		const [actualButton] = filterButton();
+		const [actualButton] = this.filterButton();
 
 		if (!(dataJs === "active")) {
 			actualButton.removeAttribute("data-js");
@@ -19,7 +19,7 @@ const actions = {
 	},
 
 	choosePlayerButton(target: Element) {
-		const [actualButton] = filterButton();
+		const [actualButton] = this.filterButton();
 		const firstPlayer = actualButton.getAttribute("value") as string;
 		const secondPlayerIs = target.getAttribute("value") as string;
 
@@ -29,8 +29,7 @@ const actions = {
 };
 
 main.addEventListener("click", (e: Event) => {
-	type TypeActions = typeof actions;
-	type AllowedKeys = keyof TypeActions;
+	type AllowedKeys = keyof typeof actions;
 
 	const target = e.target as Element;
 	const funcName = target.getAttribute("data-fn");
