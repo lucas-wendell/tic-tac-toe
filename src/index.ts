@@ -3,14 +3,14 @@ const buttons = Array.from(
 	document.querySelectorAll(".chooseButtons button"),
 ) as HTMLButtonElement[];
 
-const actions = {
-	filterButton() {
-		return buttons.filter((button) => button.getAttribute("data-js"));
-	},
+const filterButton = () => {
+	return buttons.filter((button) => button.getAttribute("data-js"));
+};
 
+const actions = {
 	chooseSymbolButton(target: Element) {
 		const dataJs = target.getAttribute("data-js");
-		const [actualButton] = this.filterButton();
+		const [actualButton] = filterButton();
 
 		if (!(dataJs === "active")) {
 			actualButton.removeAttribute("data-js");
@@ -19,7 +19,7 @@ const actions = {
 	},
 
 	choosePlayerButton(target: Element) {
-		const [actualButton] = this.filterButton();
+		const [actualButton] = filterButton();
 		const firstPlayer = actualButton.getAttribute("value") as string;
 		const secondPlayerIs = target.getAttribute("value") as string;
 

@@ -1,20 +1,20 @@
 "use strict";
 const main = document.querySelector(".main");
 const buttons = Array.from(document.querySelectorAll(".chooseButtons button"));
+const filterButton = () => {
+    return buttons.filter((button) => button.getAttribute("data-js"));
+};
 const actions = {
-    filterButton() {
-        return buttons.filter((button) => button.getAttribute("data-js"));
-    },
     chooseSymbolButton(target) {
         const dataJs = target.getAttribute("data-js");
-        const [actualButton] = this.filterButton();
+        const [actualButton] = filterButton();
         if (!(dataJs === "active")) {
             actualButton.removeAttribute("data-js");
             target.setAttribute("data-js", "active");
         }
     },
     choosePlayerButton(target) {
-        const [actualButton] = this.filterButton();
+        const [actualButton] = filterButton();
         const firstPlayer = actualButton.getAttribute("value");
         const secondPlayerIs = target.getAttribute("value");
         localStorage.setItem("firstPlayer", firstPlayer);

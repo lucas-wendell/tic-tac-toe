@@ -110,6 +110,11 @@ body {
 	background-color: var(--highlights-orange-color);
 }
 
+.main .versusButtonDiv a button[disabled] {
+	position: relative;
+	opacity: 0.4;
+}
+
 .main .versusButtonDiv a:last-child button {
 	background-color: var(--highlights-blue-color);
 }
