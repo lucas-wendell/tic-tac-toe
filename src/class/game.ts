@@ -1,3 +1,5 @@
+export type Player = "X" | "O";
+
 export class TicTacToe {
 	private gameScore = {
 		X: 0,
@@ -16,8 +18,13 @@ export class TicTacToe {
 		[0, 4, 8],
 		[2, 4, 6],
 	];
+	private acutalPlayer: Player;
 
-	checkWinner(player: "X" | "O") {
+	constructor(firstPlayer: Player) {
+		this.acutalPlayer = firstPlayer;
+	}
+
+	checkWinner(player: Player) {
 		this.lines3.forEach((_, index) => {
 			if (
 				this.board[this.lines3[index][0]] == player &&
@@ -31,20 +38,19 @@ export class TicTacToe {
 		});
 	}
 
-	updateMoves(player: "X" | "O", position: number) {
+	invertPlayer() {
+		this.acutalPlayer === "X"
+			? (this.acutalPlayer = "O")
+			: (this.acutalPlayer = "X");
+	}
+
+	updateMoves(position: number) {
 		if (this.board[position] !== "") return;
 
-		this.board[position] = player;
+		this.board[position] = this.acutalPlayer;
 		this.numberOfMoves++;
-		this.checkWinner(player);
+
+		this.checkWinner(this.acutalPlayer);
+		this.invertPlayer();
 	}
 }
-
-// testes
-const newGame = new TicTacToe();
-newGame.updateMoves("X", 0);
-newGame.updateMoves("O", 3);
-newGame.updateMoves("X", 2);
-newGame.updateMoves("O", 4);
-newGame.updateMoves("X", 1);
-console.log(newGame);
