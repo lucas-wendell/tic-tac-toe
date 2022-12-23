@@ -8,7 +8,7 @@ export class TicTacToe {
 	};
 	private numberOfMoves = 0;
 	private board = ["", "", "", "", "", "", "", "", ""];
-	private lines3 = [
+	private readonly sequences = [
 		[0, 1, 2],
 		[3, 4, 5],
 		[6, 7, 8],
@@ -25,13 +25,13 @@ export class TicTacToe {
 	}
 
 	checkWinner(player: Player) {
-		this.lines3.forEach((_, index) => {
+		this.sequences.forEach((_, index) => {
 			if (
-				this.board[this.lines3[index][0]] == player &&
-				this.board[this.lines3[index][1]] == player &&
-				this.board[this.lines3[index][2]] == player
+				this.board[this.sequences[index][0]] == player &&
+				this.board[this.sequences[index][1]] == player &&
+				this.board[this.sequences[index][2]] == player
 			) {
-				return this.gameScore[player]++;
+				this.gameScore[player]++;
 			} else if (this.numberOfMoves === 9) {
 				this.gameScore.ties++;
 			}

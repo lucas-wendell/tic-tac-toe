@@ -1,4 +1,4 @@
-"use strict";
+import { accessActions } from "../main.js";
 const main = document.querySelector(".main");
 const buttons = Array.from(document.querySelectorAll(".chooseButtons button"));
 const filterButton = () => {
@@ -21,9 +21,4 @@ const actions = {
         localStorage.setItem("secondPlayerIs", secondPlayerIs);
     },
 };
-main.addEventListener("click", (e) => {
-    const target = e.target;
-    const funcName = target.getAttribute("data-fn");
-    const fun = actions[funcName];
-    fun === null || fun === void 0 ? void 0 : fun(target);
-});
+main.addEventListener("click", (e) => accessActions(e, actions));

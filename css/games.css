@@ -38,7 +38,7 @@ body {
 	cursor: pointer;
 	border-radius: 7px;
 	background-color: var(--square-color);
-	transition: 0.5s;
+	transition: all 0.5s ease;
 }
 
 .main .square:hover {

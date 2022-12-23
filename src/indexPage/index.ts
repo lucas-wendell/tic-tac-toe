@@ -1,3 +1,5 @@
+import { accessActions } from "../main.js";
+
 const main = document.querySelector(".main") as HTMLDivElement;
 const buttons = Array.from(
 	document.querySelectorAll(".chooseButtons button"),
@@ -28,12 +30,4 @@ const actions = {
 	},
 };
 
-main.addEventListener("click", (e: Event) => {
-	type AllowedKeys = keyof typeof actions;
-
-	const target = e.target as Element;
-	const funcName = target.getAttribute("data-fn");
-
-	const fun = actions[funcName as AllowedKeys];
-	fun?.(target);
-});
+main.addEventListener("click", (e: Event) => accessActions(e, actions));
