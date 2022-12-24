@@ -1,5 +1,6 @@
-export type Player = "X" | "O";
+import { html } from "../getHtml.js";
 
+export type Player = "X" | "O";
 export class TicTacToe {
 	private gameScore = {
 		X: 0,
@@ -20,8 +21,16 @@ export class TicTacToe {
 	];
 	private acutalPlayer: Player;
 
-	constructor(firstPlayer: Player) {
+	constructor(firstPlayer: Player, private readonly scoreboard: Element[]) {
 		this.acutalPlayer = firstPlayer;
+	}
+
+	updateScore(player: Player) {
+		const [winner] = this.scoreboard.filter(
+			(item) => item.getAttribute("data-value") === player,
+		);
+		const paragraphScore = html.get(".score", winner);
+		paragraphScore.textContent = this.gameScore[player].toString();
 	}
 
 	checkWinner(player: Player) {
@@ -32,6 +41,7 @@ export class TicTacToe {
 				this.board[this.sequences[index][2]] == player
 			) {
 				this.gameScore[player]++;
+				this.updateScore(player);
 			} else if (this.numberOfMoves === 9) {
 				this.gameScore.ties++;
 			}
@@ -52,5 +62,6 @@ export class TicTacToe {
 
 		this.checkWinner(this.acutalPlayer);
 		this.invertPlayer();
+		console.log(this);
 	}
 }

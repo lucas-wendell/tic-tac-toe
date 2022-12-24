@@ -1,5 +1,7 @@
+import { html } from "../getHtml.js";
 export class TicTacToe {
-    constructor(firstPlayer) {
+    constructor(firstPlayer, scoreboard) {
+        this.scoreboard = scoreboard;
         this.gameScore = {
             X: 0,
             O: 0,
@@ -19,12 +21,18 @@ export class TicTacToe {
         ];
         this.acutalPlayer = firstPlayer;
     }
+    updateScore(player) {
+        const [winner] = this.scoreboard.filter((item) => item.getAttribute("data-value") === player);
+        const paragraphScore = html.get(".score", winner);
+        paragraphScore.textContent = this.gameScore[player].toString();
+    }
     checkWinner(player) {
         this.sequences.forEach((_, index) => {
             if (this.board[this.sequences[index][0]] == player &&
                 this.board[this.sequences[index][1]] == player &&
                 this.board[this.sequences[index][2]] == player) {
                 this.gameScore[player]++;
+                this.updateScore(player);
             }
             else if (this.numberOfMoves === 9) {
                 this.gameScore.ties++;
@@ -43,5 +51,6 @@ export class TicTacToe {
         this.numberOfMoves++;
         this.checkWinner(this.acutalPlayer);
         this.invertPlayer();
+        console.log(this);
     }
 }

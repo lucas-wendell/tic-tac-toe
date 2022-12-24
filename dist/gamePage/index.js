@@ -1,8 +1,10 @@
 import { TicTacToe } from "../class/game.js";
 import { accessActions } from "../main.js";
-const main = document.querySelector(".main");
+import { html } from "../getHtml.js";
+const main = html.get(".main");
+const scoreboard = html.getAll('[data-js="scoreboard"]');
 const firstPlayer = localStorage.getItem("firstPlayer");
-const newGame = new TicTacToe(firstPlayer);
+const newGame = new TicTacToe(firstPlayer, scoreboard);
 const actions = {
     squareClick: (target) => {
         const value = target.getAttribute("data-value");
