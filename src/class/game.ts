@@ -1,9 +1,8 @@
-// import { html } from "../getHtml.js";
 import { UpdateDom } from "./updateDOM.js";
+import { Player, GameScore } from "./protocols/protocols.js";
 
-export type Player = "X" | "O";
 export class TicTacToe {
-	private gameScore = {
+	private gameScore: GameScore = {
 		X: 0,
 		O: 0,
 		ties: 0,

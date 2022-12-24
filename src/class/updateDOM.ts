@@ -1,12 +1,5 @@
 import { html } from "../getHtml.js";
-import { Player } from "./game.js";
-
-type GameScore = {
-	X: number;
-	O: number;
-	ties: number;
-};
-
+import { Player, GameScore } from "./protocols/protocols.js";
 export class UpdateDom {
 	private icons = {
 		X: "fa-solid fa-xmark",
@@ -20,10 +13,9 @@ export class UpdateDom {
 		const [squareToRefresh] = this.board.filter(
 			(square) => Number(square.getAttribute("data-value")) === value,
 		);
-
 		const icon = document.createElement("i");
-		icon.className = this.icons[player];
 
+		icon.className = this.icons[player];
 		squareToRefresh.appendChild(icon);
 	}
 
