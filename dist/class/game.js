@@ -1,8 +1,5 @@
 export class TicTacToe {
-    // private updateDom: UpdateDom = new UpdateDom(this.scoreboard);
-    constructor(firstPlayer, 
-    // private readonly scoreboard: Element[],
-    updateDom) {
+    constructor(firstPlayer, updateDom) {
         this.updateDom = updateDom;
         this.gameScore = {
             X: 0,
@@ -23,23 +20,12 @@ export class TicTacToe {
         ];
         this.acutalPlayer = firstPlayer;
     }
-    /*
-    updateScore(player: Player) {
-        const [winner] = this.scoreboard.filter(
-            (item) => item.getAttribute("data-value") === player,
-        );
-        const paragraphScore = html.get(".score", winner);
-        paragraphScore.textContent = this.gameScore[player].toString();
-    } */
     checkWinner(player) {
         this.sequences.forEach((_, index) => {
             if (this.board[this.sequences[index][0]] == player &&
                 this.board[this.sequences[index][1]] == player &&
                 this.board[this.sequences[index][2]] == player) {
                 this.gameScore[player]++;
-                // this.updateScore(player);
-                // console.log(player);
-                // console.log(this.sequences[index]);
                 this.updateDom.updateScore(player, this.gameScore);
                 this.updateDom.markSquares(this.sequences[index]);
             }

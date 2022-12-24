@@ -1,5 +1,5 @@
 import { TicTacToe } from "../class/game.js";
-import { Player } from "../class/game.js";
+import { Player } from "../class/protocols/protocols.js";
 import { accessActions } from "../main.js";
 
 import { html } from "../getHtml.js";

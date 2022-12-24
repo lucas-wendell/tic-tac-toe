@@ -6,7 +6,6 @@ const main = html.get(".main");
 const scoreboard = html.getAll('[data-js="scoreboard"]');
 const firstPlayer = localStorage.getItem("firstPlayer");
 const updateDOM = new UpdateDom(scoreboard);
-// const newGame = new TicTacToe(firstPlayer, scoreboard, updateDOM);
 const newGame = new TicTacToe(firstPlayer, updateDOM);
 const actions = {
     squareClick: (target) => {
