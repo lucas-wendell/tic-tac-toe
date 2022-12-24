@@ -1,7 +1,9 @@
-import { html } from "../getHtml.js";
 export class TicTacToe {
-    constructor(firstPlayer, scoreboard) {
-        this.scoreboard = scoreboard;
+    // private updateDom: UpdateDom = new UpdateDom(this.scoreboard);
+    constructor(firstPlayer, 
+    // private readonly scoreboard: Element[],
+    updateDom) {
+        this.updateDom = updateDom;
         this.gameScore = {
             X: 0,
             O: 0,
@@ -21,18 +23,25 @@ export class TicTacToe {
         ];
         this.acutalPlayer = firstPlayer;
     }
-    updateScore(player) {
-        const [winner] = this.scoreboard.filter((item) => item.getAttribute("data-value") === player);
+    /*
+    updateScore(player: Player) {
+        const [winner] = this.scoreboard.filter(
+            (item) => item.getAttribute("data-value") === player,
+        );
         const paragraphScore = html.get(".score", winner);
         paragraphScore.textContent = this.gameScore[player].toString();
-    }
+    } */
     checkWinner(player) {
         this.sequences.forEach((_, index) => {
             if (this.board[this.sequences[index][0]] == player &&
                 this.board[this.sequences[index][1]] == player &&
                 this.board[this.sequences[index][2]] == player) {
                 this.gameScore[player]++;
-                this.updateScore(player);
+                // this.updateScore(player);
+                // console.log(player);
+                // console.log(this.sequences[index]);
+                this.updateDom.updateScore(player, this.gameScore);
+                this.updateDom.markSquares(this.sequences[index]);
             }
             else if (this.numberOfMoves === 9) {
                 this.gameScore.ties++;
@@ -50,6 +59,7 @@ export class TicTacToe {
         this.board[position] = this.acutalPlayer;
         this.numberOfMoves++;
         this.checkWinner(this.acutalPlayer);
+        this.updateDom.updateSquare(this.acutalPlayer, position);
         this.invertPlayer();
         console.log(this);
     }

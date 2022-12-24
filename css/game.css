@@ -37,11 +37,22 @@ body {
 .main .square {
 	cursor: pointer;
 	border-radius: 7px;
+	font-size: 8rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--highlights-blue-color);
 	background-color: var(--square-color);
 	transition: all 0.5s ease;
 }
 
+.main .square.active {
+	background-color: var(--highlights-blue-color);
+	color: var(--square-color);
+}
+
 .main .square:hover {
+	color: var(--square-color);
 	background-color: var(--highlights-blue-color);
 }
 
