@@ -12,5 +12,9 @@ const actions = {
         const value = target.getAttribute("data-value");
         newGame.updateMoves(+value);
     },
+    restartBoard(target) {
+        console.log(target);
+        newGame.restartGame();
+    },
 };
 main.addEventListener("click", (e) => accessActions(e, actions));

@@ -19,7 +19,7 @@ export class UpdateDom {
 		squareToRefresh.appendChild(icon);
 	}
 
-	updateScore(player: Player, gameScore: GameScore) {
+	updateScore(player: Player | "ties", gameScore: GameScore) {
 		const [winner] = this.scoreboard.filter(
 			(item) => item.getAttribute("data-value") === player,
 		);
@@ -36,6 +36,13 @@ export class UpdateDom {
 					square.classList.add("active");
 				}
 			});
+		});
+	}
+
+	uncheckSquare() {
+		this.board.forEach((square) => {
+			square.classList.remove("active");
+			square.innerHTML = "";
 		});
 	}
 }

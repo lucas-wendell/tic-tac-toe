@@ -20,17 +20,28 @@ export class TicTacToe {
         ];
         this.acutalPlayer = firstPlayer;
     }
+    restartGame() {
+        this.board.forEach((_, index) => {
+            this.board[index] = "";
+        });
+        this.numberOfMoves = 0;
+        this.updateDom.uncheckSquare();
+        console.log(this);
+    }
     checkWinner(player) {
         this.sequences.forEach((_, index) => {
-            if (this.board[this.sequences[index][0]] == player &&
+            const thereIsAWinner = this.board[this.sequences[index][0]] == player &&
                 this.board[this.sequences[index][1]] == player &&
-                this.board[this.sequences[index][2]] == player) {
+                this.board[this.sequences[index][2]] == player;
+            if (thereIsAWinner) {
                 this.gameScore[player]++;
                 this.updateDom.updateScore(player, this.gameScore);
                 this.updateDom.markSquares(this.sequences[index]);
+                // this.restartGame();
             }
             else if (this.numberOfMoves === 9) {
-                this.gameScore.ties++;
+                this.gameScore.ties += 1;
+                this.updateDom.updateScore("ties", this.gameScore);
             }
         });
     }

@@ -15,6 +15,18 @@
 		<title>Document</title>
 	</head>
 	<body>
+		<div class="modalOverlay">
+			<div class="winnerModal">
+				<p>you won!</p>
+				<h2>
+					<span><i class="fa-solid fa-xmark"></i></span>takes the round
+				</h2>
+				<div class="buttonDiv">
+					<button class="quitButton">quit</button>
+					<button class="nextRoundButton">next round</button>
+				</div>
+			</div>
+		</div>
 		<main class="main">
 			<div class="icons">
 				<i class="fa-solid fa-xmark"></i>
@@ -25,16 +37,12 @@
 				<p><i class="fa-solid fa-xmark"></i> turn</p>
 			</div>
 
-			<div class="rotateDiv">
-				<i class="fa-solid fa-rotate-right"></i>
+			<div data-fn="restartBoard" class="rotateDiv">
+				<i data-fn="restartBoard" class="fa-solid fa-rotate-right"></i>
 			</div>
 
-			<div data-fn="squareClick" data-value="0" class="square square1">
-				<!-- <i class="fa-solid fa-xmark"></i> -->
-			</div>
-			<div data-fn="squareClick" data-value="1" class="square square2">
-				<!-- <i class="fa-regular fa-circle"></i> -->
-			</div>
+			<div data-fn="squareClick" data-value="0" class="square square1"></div>
+			<div data-fn="squareClick" data-value="1" class="square square2"></div>
 			<div data-fn="squareClick" data-value="2" class="square square3"></div>
 			<div data-fn="squareClick" data-value="3" class="square square4"></div>
 			<div data-fn="squareClick" data-value="4" class="square square5"></div>
