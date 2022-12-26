@@ -31,7 +31,7 @@ body {
 	display: flex;
 	position: absolute;
 	align-items: center;
-	/* display: none; */
+	display: none;
 	justify-content: center;
 	background: rgba(0, 0, 0, 0.4);
 }
@@ -71,6 +71,7 @@ body {
 	border: none;
 	height: 30px;
 	width: 100px;
+	cursor: pointer;
 	font-weight: 500;
 	border-radius: 5px;
 	text-transform: uppercase;

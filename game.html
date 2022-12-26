@@ -15,18 +15,23 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<div class="modalOverlay">
+		<div data-js="modal" class="modalOverlay">
 			<div class="winnerModal">
 				<p>you won!</p>
 				<h2>
 					<span><i class="fa-solid fa-xmark"></i></span>takes the round
 				</h2>
 				<div class="buttonDiv">
-					<button class="quitButton">quit</button>
-					<button class="nextRoundButton">next round</button>
+					<a href="./index.html">
+						<button data-fn="modaQuitButton" class="quitButton">quit</button>
+					</a>
+					<button data-fn="modaRestartButton" class="nextRoundButton">
+						next round
+					</button>
 				</div>
 			</div>
 		</div>
+
 		<main class="main">
 			<div class="icons">
 				<i class="fa-solid fa-xmark"></i>

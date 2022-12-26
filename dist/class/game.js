@@ -18,6 +18,7 @@ export class TicTacToe {
             [0, 4, 8],
             [2, 4, 6],
         ];
+        this.isThereAWinner = false;
         this.acutalPlayer = firstPlayer;
     }
     restartGame() {
@@ -26,7 +27,6 @@ export class TicTacToe {
         });
         this.numberOfMoves = 0;
         this.updateDom.uncheckSquare();
-        console.log(this);
     }
     checkWinner(player) {
         this.sequences.forEach((_, index) => {
@@ -37,13 +37,17 @@ export class TicTacToe {
                 this.gameScore[player]++;
                 this.updateDom.updateScore(player, this.gameScore);
                 this.updateDom.markSquares(this.sequences[index]);
-                // this.restartGame();
-            }
-            else if (this.numberOfMoves === 9) {
-                this.gameScore.ties += 1;
-                this.updateDom.updateScore("ties", this.gameScore);
+                this.updateDom.showModal(player);
+                this.isThereAWinner = true;
+                this.acutalPlayer = player;
             }
         });
+        if (this.numberOfMoves === 9 && this.isThereAWinner === false) {
+            this.gameScore.ties += 1;
+            this.updateDom.updateScore("ties", this.gameScore);
+            this.updateDom.showModal("ties");
+            return false;
+        }
     }
     invertPlayer() {
         this.acutalPlayer === "X"

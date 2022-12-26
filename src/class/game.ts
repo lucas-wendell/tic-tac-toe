@@ -20,6 +20,7 @@ export class TicTacToe {
 		[2, 4, 6],
 	];
 	private acutalPlayer: Player;
+	private isThereAWinner = false;
 
 	constructor(firstPlayer: Player, private updateDom: UpdateDom) {
 		this.acutalPlayer = firstPlayer;
@@ -44,12 +45,19 @@ export class TicTacToe {
 				this.gameScore[player]++;
 				this.updateDom.updateScore(player, this.gameScore);
 				this.updateDom.markSquares(this.sequences[index]);
-				// this.restartGame();
-			} else if (this.numberOfMoves === 9) {
-				this.gameScore.ties += 1;
-				this.updateDom.updateScore("ties", this.gameScore);
+				this.updateDom.showModal(player);
+				this.isThereAWinner = true;
+				this.acutalPlayer = player;
 			}
 		});
+
+		if (this.numberOfMoves === 9 && this.isThereAWinner === false) {
+			this.gameScore.ties += 1;
+			this.updateDom.updateScore("ties", this.gameScore);
+			this.updateDom.showModal("ties");
+
+			return false;
+		}
 	}
 
 	invertPlayer() {

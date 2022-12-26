@@ -7,6 +7,7 @@ export class UpdateDom {
 	};
 
 	private board: Element[] = html.getAll('[data-fn="squareClick"]');
+	private modal = html.get("[data-js='modal']") as HTMLDivElement;
 	constructor(private scoreboard: Element[]) {}
 
 	updateSquare(player: Player, value: number) {
@@ -44,5 +45,12 @@ export class UpdateDom {
 			square.classList.remove("active");
 			square.innerHTML = "";
 		});
+	}
+
+	showModal(player: Player | "ties") {
+		const span = this.modal.querySelector("h2 span") as HTMLSpanElement;
+
+		span.innerHTML = player;
+		this.modal.style.display = "flex";
 	}
 }
