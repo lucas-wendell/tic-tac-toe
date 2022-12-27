@@ -30,6 +30,7 @@ export class TicTacToe {
 		this.board.forEach((_, index) => {
 			this.board[index] = "";
 		});
+		this.isThereAWinner = false;
 		this.numberOfMoves = 0;
 		this.updateDom.uncheckSquare();
 	}
@@ -48,13 +49,17 @@ export class TicTacToe {
 				this.updateDom.showModal(player);
 				this.isThereAWinner = true;
 				this.acutalPlayer = player;
+				// this.numberOfMoves = 0;
 			}
 		});
 
 		if (this.numberOfMoves === 9 && this.isThereAWinner === false) {
+			console.log("entrou aqui");
+
 			this.gameScore.ties += 1;
 			this.updateDom.updateScore("ties", this.gameScore);
 			this.updateDom.showModal("ties");
+			this.isThereAWinner = false;
 
 			return false;
 		}

@@ -47,8 +47,28 @@ export class UpdateDom {
 		});
 	}
 
+	showModalOnTies() {
+		const h2 = html.get("h2", this.modal);
+		const congratulationsParagraph = html.get(
+			".congratulationsParagraph",
+			this.modal,
+		) as HTMLParagraphElement;
+
+		congratulationsParagraph.style.display = "none";
+		const span = html.get("h2 span", this.modal) as HTMLSpanElement;
+		span.style.display = "none";
+
+		h2.textContent = "nobody won";
+		this.modal.style.display = "flex";
+	}
+
 	showModal(player: Player | "ties") {
-		const span = this.modal.querySelector("h2 span") as HTMLSpanElement;
+		if (player === "ties") return this.showModalOnTies();
+		const span = html.get("h2 span", this.modal) as HTMLSpanElement;
+
+		console.log(span);
+
+		span.style.display = "initial";
 
 		span.innerHTML = player;
 		this.modal.style.display = "flex";
