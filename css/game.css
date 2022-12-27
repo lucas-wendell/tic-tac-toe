@@ -28,19 +28,26 @@ body {
 	z-index: 5;
 	width: 100vw;
 	height: 100vh;
-	display: flex;
+	display: none;
 	position: absolute;
 	align-items: center;
-	display: none;
 	justify-content: center;
 	background: rgba(0, 0, 0, 0.4);
 }
 
-.winnerModal {
+.modal .heading {
+	gap: 5px;
+	display: flex;
+	margin: 15px 0;
+	align-items: center;
+	color: var(--highlights-blue-color);
+}
+
+.modal {
 	z-index: 10;
 	width: 100vw;
 	color: #fff;
-	display: flex;
+	display: none;
 	padding: 20px 0;
 	position: absolute;
 	align-items: center;
@@ -50,24 +57,12 @@ body {
 	background-color: var(--square-color);
 }
 
-.winnerModal h2 {
-	gap: 5px;
-	display: flex;
-	margin: 15px 0;
-	align-items: center;
-	color: var(--highlights-blue-color);
-}
-
-.winnerModal h2 span {
-	font-size: 3.5rem;
-}
-
-.winnerModal .buttonDiv {
+.modal .buttonDiv {
 	gap: 10px;
 	display: flex;
 }
 
-.winnerModal .buttonDiv button {
+.modal .buttonDiv button {
 	border: none;
 	height: 30px;
 	width: 100px;
@@ -79,9 +74,13 @@ body {
 	background-color: var(--highlights-orange-color);
 }
 
-.winnerModal .buttonDiv button:first-child {
+.modal .buttonDiv button:first-child {
 	width: 60px;
 	background-color: var(--gray-color);
+}
+
+.winnerModal .heading span {
+	font-size: 3.5rem;
 }
 
 .main {

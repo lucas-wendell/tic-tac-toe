@@ -16,11 +16,24 @@
 	</head>
 	<body>
 		<div data-js="modal" class="modalOverlay">
-			<div class="winnerModal">
+			<div class="modal winnerModal">
 				<p class="congratulationsParagraph">you won!</p>
-				<h2>
+				<h2 class="heading">
 					<span><i class="fa-solid fa-xmark"></i></span>takes the round
 				</h2>
+				<div class="buttonDiv">
+					<a href="./index.html">
+						<button data-fn="modaQuitButton" class="quitButton">quit</button>
+					</a>
+					<button data-fn="modaRestartButton" class="nextRoundButton">
+						next round
+					</button>
+				</div>
+			</div>
+
+			<div class="modal tiesModal">
+				<h2 class="heading">nobody won</h2>
+
 				<div class="buttonDiv">
 					<a href="./index.html">
 						<button data-fn="modaQuitButton" class="quitButton">quit</button>

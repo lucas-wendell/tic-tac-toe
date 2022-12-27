@@ -8,6 +8,9 @@ export class UpdateDom {
 
 	private board: Element[] = html.getAll('[data-fn="squareClick"]');
 	private modal = html.get("[data-js='modal']") as HTMLDivElement;
+
+	private winnerModal = html.get(".winnerModal", this.modal) as HTMLDivElement;
+	private tiesModal = html.get(".tiesModal", this.modal) as HTMLDivElement;
 	constructor(private scoreboard: Element[]) {}
 
 	updateSquare(player: Player, value: number) {
@@ -48,27 +51,18 @@ export class UpdateDom {
 	}
 
 	showModalOnTies() {
-		const h2 = html.get("h2", this.modal);
-		const congratulationsParagraph = html.get(
-			".congratulationsParagraph",
-			this.modal,
-		) as HTMLParagraphElement;
+		this.winnerModal.style.display = "none";
+		this.tiesModal.style.display = "flex";
 
-		congratulationsParagraph.style.display = "none";
-		const span = html.get("h2 span", this.modal) as HTMLSpanElement;
-		span.style.display = "none";
-
-		h2.textContent = "nobody won";
 		this.modal.style.display = "flex";
 	}
 
 	showModal(player: Player | "ties") {
 		if (player === "ties") return this.showModalOnTies();
-		const span = html.get("h2 span", this.modal) as HTMLSpanElement;
+		const span = html.get("h2 span", this.winnerModal) as HTMLSpanElement;
 
-		console.log(span);
-
-		span.style.display = "initial";
+		this.winnerModal.style.display = "flex";
+		this.tiesModal.style.display = "none";
 
 		span.innerHTML = player;
 		this.modal.style.display = "flex";

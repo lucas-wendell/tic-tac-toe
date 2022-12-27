@@ -35,6 +35,22 @@ export class TicTacToe {
 		this.updateDom.uncheckSquare();
 	}
 
+	handleOnVictory(player: Player, sequenceIndex: number) {
+		this.gameScore[player]++;
+		this.updateDom.updateScore(player, this.gameScore);
+		this.updateDom.markSquares(this.sequences[sequenceIndex]);
+		this.updateDom.showModal(player);
+		this.isThereAWinner = true;
+		this.acutalPlayer = player;
+	}
+
+	handleOnTies() {
+		this.gameScore.ties += 1;
+		this.updateDom.updateScore("ties", this.gameScore);
+		this.updateDom.showModal("ties");
+		this.isThereAWinner = false;
+	}
+
 	checkWinner(player: Player) {
 		this.sequences.forEach((_, index) => {
 			const thereIsAWinner =
@@ -43,25 +59,12 @@ export class TicTacToe {
 				this.board[this.sequences[index][2]] == player;
 
 			if (thereIsAWinner) {
-				this.gameScore[player]++;
-				this.updateDom.updateScore(player, this.gameScore);
-				this.updateDom.markSquares(this.sequences[index]);
-				this.updateDom.showModal(player);
-				this.isThereAWinner = true;
-				this.acutalPlayer = player;
-				// this.numberOfMoves = 0;
+				this.handleOnVictory(player, index);
 			}
 		});
 
 		if (this.numberOfMoves === 9 && this.isThereAWinner === false) {
-			console.log("entrou aqui");
-
-			this.gameScore.ties += 1;
-			this.updateDom.updateScore("ties", this.gameScore);
-			this.updateDom.showModal("ties");
-			this.isThereAWinner = false;
-
-			return false;
+			this.handleOnTies();
 		}
 	}
 
