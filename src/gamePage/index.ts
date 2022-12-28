@@ -7,6 +7,7 @@ import { UpdateDom } from "../class/updateDOM.js";
 
 const modal = html.get('[data-js="modal"]') as HTMLDivElement;
 const main = html.get(".main") as HTMLDivElement;
+
 const scoreboard = html.getAll('[data-js="scoreboard"]');
 const firstPlayer = localStorage.getItem("firstPlayer") as Player;
 
@@ -18,9 +19,8 @@ const actions = {
 		const value = target.getAttribute("data-value") as string;
 		newGame.updateMoves(+value);
 	},
-	restartBoard(target: Element) {
-		console.log(target);
-		newGame.restartGame();
+	restartBoard() {
+		newGame.restartRound();
 	},
 	modaQuitButton() {
 		modal.style.display = "none";

@@ -1,11 +1,7 @@
 export class TicTacToe {
     constructor(firstPlayer, updateDom) {
         this.updateDom = updateDom;
-        this.gameScore = {
-            X: 0,
-            O: 0,
-            ties: 0,
-        };
+        this.isThereAWinner = false;
         this.numberOfMoves = 0;
         this.board = ["", "", "", "", "", "", "", "", ""];
         this.sequences = [
@@ -18,16 +14,36 @@ export class TicTacToe {
             [0, 4, 8],
             [2, 4, 6],
         ];
-        this.isThereAWinner = false;
+        this.gameScore = {
+            X: 0,
+            O: 0,
+            ties: 0,
+        };
         this.acutalPlayer = firstPlayer;
+        this.updateDom.updateTurnDiv(this.acutalPlayer);
     }
-    restartGame() {
+    restartBoard() {
         this.board.forEach((_, index) => {
             this.board[index] = "";
         });
+    }
+    restartRound() {
+        this.restartBoard();
+        this.updateDom.uncheckSquare();
+    }
+    restartGame() {
+        this.invertPlayer();
+        this.restartBoard();
         this.isThereAWinner = false;
         this.numberOfMoves = 0;
         this.updateDom.uncheckSquare();
+        this.updateDom.updateTurnDiv(this.acutalPlayer);
+    }
+    handleOnTies() {
+        this.gameScore.ties++;
+        this.updateDom.updateScore("ties", this.gameScore);
+        this.updateDom.showModal("ties");
+        this.isThereAWinner = false;
     }
     handleOnVictory(player, sequenceIndex) {
         this.gameScore[player]++;
@@ -35,13 +51,6 @@ export class TicTacToe {
         this.updateDom.markSquares(this.sequences[sequenceIndex]);
         this.updateDom.showModal(player);
         this.isThereAWinner = true;
-        this.acutalPlayer = player;
-    }
-    handleOnTies() {
-        this.gameScore.ties += 1;
-        this.updateDom.updateScore("ties", this.gameScore);
-        this.updateDom.showModal("ties");
-        this.isThereAWinner = false;
     }
     checkWinner(player) {
         this.sequences.forEach((_, index) => {
@@ -69,6 +78,6 @@ export class TicTacToe {
         this.checkWinner(this.acutalPlayer);
         this.updateDom.updateSquare(this.acutalPlayer, position);
         this.invertPlayer();
-        console.log(this);
+        this.updateDom.updateTurnDiv(this.acutalPlayer);
     }
 }

@@ -2,13 +2,12 @@ import { UpdateDom } from "./updateDOM.js";
 import { Player, GameScore } from "./protocols/protocols.js";
 
 export class TicTacToe {
-	private gameScore: GameScore = {
-		X: 0,
-		O: 0,
-		ties: 0,
-	};
+	private acutalPlayer: Player;
+	private isThereAWinner = false;
+
 	private numberOfMoves = 0;
-	private board = ["", "", "", "", "", "", "", "", ""];
+	private readonly board = ["", "", "", "", "", "", "", "", ""];
+
 	private readonly sequences = [
 		[0, 1, 2],
 		[3, 4, 5],
@@ -19,39 +18,53 @@ export class TicTacToe {
 		[0, 4, 8],
 		[2, 4, 6],
 	];
-	private acutalPlayer: Player;
-	private isThereAWinner = false;
+	private gameScore: GameScore = {
+		X: 0,
+		O: 0,
+		ties: 0,
+	};
 
 	constructor(firstPlayer: Player, private updateDom: UpdateDom) {
 		this.acutalPlayer = firstPlayer;
+		this.updateDom.updateTurnDiv(this.acutalPlayer);
 	}
 
-	restartGame() {
+	private restartBoard(): void {
 		this.board.forEach((_, index) => {
 			this.board[index] = "";
 		});
-		this.isThereAWinner = false;
-		this.numberOfMoves = 0;
+	}
+
+	restartRound() {
+		this.restartBoard();
 		this.updateDom.uncheckSquare();
 	}
 
-	handleOnVictory(player: Player, sequenceIndex: number) {
-		this.gameScore[player]++;
-		this.updateDom.updateScore(player, this.gameScore);
-		this.updateDom.markSquares(this.sequences[sequenceIndex]);
-		this.updateDom.showModal(player);
-		this.isThereAWinner = true;
-		this.acutalPlayer = player;
+	restartGame(): void {
+		this.invertPlayer();
+		this.restartBoard();
+		this.isThereAWinner = false;
+		this.numberOfMoves = 0;
+		this.updateDom.uncheckSquare();
+		this.updateDom.updateTurnDiv(this.acutalPlayer);
 	}
 
-	handleOnTies() {
-		this.gameScore.ties += 1;
+	private handleOnTies(): void {
+		this.gameScore.ties++;
 		this.updateDom.updateScore("ties", this.gameScore);
 		this.updateDom.showModal("ties");
 		this.isThereAWinner = false;
 	}
 
-	checkWinner(player: Player) {
+	private handleOnVictory(player: Player, sequenceIndex: number): void {
+		this.gameScore[player]++;
+		this.updateDom.updateScore(player, this.gameScore);
+		this.updateDom.markSquares(this.sequences[sequenceIndex]);
+		this.updateDom.showModal(player);
+		this.isThereAWinner = true;
+	}
+
+	private checkWinner(player: Player): void {
 		this.sequences.forEach((_, index) => {
 			const thereIsAWinner =
 				this.board[this.sequences[index][0]] == player &&
@@ -68,13 +81,13 @@ export class TicTacToe {
 		}
 	}
 
-	invertPlayer() {
+	private invertPlayer(): void {
 		this.acutalPlayer === "X"
 			? (this.acutalPlayer = "O")
 			: (this.acutalPlayer = "X");
 	}
 
-	updateMoves(position: number) {
+	updateMoves(position: number): void {
 		if (this.board[position] !== "") return;
 
 		this.board[position] = this.acutalPlayer;
@@ -83,6 +96,6 @@ export class TicTacToe {
 		this.checkWinner(this.acutalPlayer);
 		this.updateDom.updateSquare(this.acutalPlayer, position);
 		this.invertPlayer();
-		console.log(this);
+		this.updateDom.updateTurnDiv(this.acutalPlayer);
 	}
 }

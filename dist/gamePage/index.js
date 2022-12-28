@@ -13,9 +13,8 @@ const actions = {
         const value = target.getAttribute("data-value");
         newGame.updateMoves(+value);
     },
-    restartBoard(target) {
-        console.log(target);
-        newGame.restartGame();
+    restartBoard() {
+        newGame.restartRound();
     },
     modaQuitButton() {
         modal.style.display = "none";
