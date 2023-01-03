@@ -1,5 +1,5 @@
-import { UpdateDom } from "./updateDOM.js";
-import { Player, GameScore } from "./protocols/protocols.js";
+import { UpdateDom } from "./updateDOM";
+import { Player, GameScore } from "./protocols/protocols";
 
 export class TicTacToe {
 	private acutalPlayer: Player;
@@ -38,6 +38,7 @@ export class TicTacToe {
 	restartRound() {
 		this.restartBoard();
 		this.updateDom.uncheckSquare();
+		this.numberOfMoves = 0;
 	}
 
 	restartGame(): void {

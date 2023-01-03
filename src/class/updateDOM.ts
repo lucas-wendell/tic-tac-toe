@@ -1,5 +1,5 @@
-import { html } from "../getHtml.js";
-import { Player, GameScore } from "./protocols/protocols.js";
+import { html } from "../getHtml";
+import { Player, GameScore } from "./protocols/protocols";
 export class UpdateDom {
 	private board: Element[] = html.getAll('[data-fn="squareClick"]');
 	private modal = html.get("[data-js='modal']") as HTMLDivElement;
@@ -76,6 +76,8 @@ export class UpdateDom {
 
 	updateTurnDiv(player: Player) {
 		const span = html.get("p span", this.turnDiv);
-		span.innerHTML = `<i class="${this.icons[player]}"></i>`;
+		if (span) {
+			span.innerHTML = `<i class="${this.icons[player]}"></i>`;
+		}
 	}
 }

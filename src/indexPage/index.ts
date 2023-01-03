@@ -1,15 +1,14 @@
-import { accessActions } from "../main.js";
+import { html } from "../getHtml";
 
-const main = document.querySelector(".main") as HTMLDivElement;
 const buttons = Array.from(
-	document.querySelectorAll(".chooseButtons button"),
+	html.getAll(".chooseButtons button"),
 ) as HTMLButtonElement[];
 
 const filterButton = () => {
 	return buttons.filter((button) => button.getAttribute("data-js"));
 };
 
-const actions = {
+export const actions = {
 	chooseSymbolButton(target: Element) {
 		const dataJs = target.getAttribute("data-js");
 		const [actualButton] = filterButton();
@@ -29,5 +28,3 @@ const actions = {
 		localStorage.setItem("secondPlayerIs", secondPlayerIs);
 	},
 };
-
-main.addEventListener("click", (e: Event) => accessActions(e, actions));
