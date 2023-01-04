@@ -168,3 +168,73 @@ body {
 .main .statusDiv.circle-scoreboard {
 	background-color: var(--highlights-orange-color);
 }
+
+@media (max-width: 500px) {
+	.main {
+		grid-template-columns: repeat(3, 120px);
+		grid-template-rows: 30px 120px 120px 120px 40px;
+	}
+
+	.main .square {
+		font-size: 6.5rem;
+	}
+}
+
+@media (max-width: 400px) {
+	.main {
+		grid-template-columns: repeat(3, 90px);
+		grid-template-rows: 20px 90px 90px 90px 30px;
+	}
+
+	.main .square {
+		font-size: 5rem;
+	}
+
+	.main .rotateDiv {
+		width: 20px;
+		font-size: 0.8rem;
+	}
+
+	.main .turnDiv {
+		font-size: 0.8rem;
+	}
+
+	.main .icons {
+		font-size: 1.1rem;
+	}
+
+	.main .statusDiv {
+		font-size: 0.7rem;
+	}
+}
+
+@media (max-width: 310px) {
+	.main {
+		grid-template-columns: repeat(3, 80px);
+		grid-template-rows: 20px 80px 80px 80px 30px;
+	}
+
+	.main .square {
+		font-size: 4.5rem;
+	}
+
+	.main .statusDiv {
+		font-size: 0.6rem;
+	}
+
+	.modal .heading {
+		margin: 5px 0;
+	}
+
+	.winnerModal .heading span {
+		font-size: 3rem;
+	}
+
+	.modal .buttonDiv button {
+		width: 90px;
+	}
+
+	.modal .buttonDiv button:first-child {
+		width: 50px;
+	}
+}
