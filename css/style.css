@@ -118,3 +118,15 @@ body {
 .main .versusButtonDiv a:last-child button {
 	background-color: var(--highlights-blue-color);
 }
+
+@media (max-width: 500px) {
+	.main {
+		width: 60%;
+	}
+}
+
+@media (max-width: 350px) {
+	.main {
+		width: 80%;
+	}
+}
