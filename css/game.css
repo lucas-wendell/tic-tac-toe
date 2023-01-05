@@ -105,14 +105,26 @@ body {
 	background-color: var(--square-color);
 }
 
+.main .square .fa-circle {
+	color: var(--highlights-orange-color);
+}
+
 .main .square.active {
 	color: var(--square-color);
 	background-color: var(--highlights-blue-color);
 }
 
+.main .square.active .fa-circle {
+	color: var(--square-color);
+}
+
 .main .square:hover {
 	color: var(--square-color);
 	background-color: var(--highlights-blue-color);
+}
+
+.main .square:hover .fa-circle {
+	color: var(--square-color);
 }
 
 .main .icons {
